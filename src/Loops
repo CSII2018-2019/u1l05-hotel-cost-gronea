@@ -1,42 +1,65 @@
-//Java code for loops
 import javax.swing.JOptionPane;
 
-public class Loops {
-	public static void main (String [] args){
-		//ask the user for a start time and duration
-		//give an ending time
+public class TestingReviewch1Loops {
+
+	public static void main(String[] args) {
+		int cost = 0;
+		int nights = 0;
+		//3 different hotels and the lists that are going to hold the bar graph
+		int aurburnLodge = 0;
+		String message1 = string("| ");
+		//list3.addAll(list2);
+		int claytonHotel = 0;
+		String message2 = string("| ");
+		int kClub = 0;
+		String message3 = string("| ");
 		
-		//GET STARTING TIME
-		int hours = 0;
-		int minutes = 0;
+		//Input # of nights
 		do {
-			String answer = JOptionPane.showInputDialog(null, "Give me a start time (ex: 3:10): ");
-			//figure out where the colon in
-			int colonInd = answer.indexOf(':');
-			//take start of string to where the colon is and make it an integer
-			System.out.println(colonInd);
-			hours = Integer.parseInt(answer.substring(0, colonInd));
-			//take colon to end of string and make it an integer
-			System.out.println(hours);
-			minutes = Integer.parseInt(answer.substring(colonInd + 1, answer.length()));
-			//check that it came in correctly
-			System.out.println("Hours: " + hours);
-			System.out.println("Minutes: " + minutes);
-		} while (hours < 1 || minutes < 0);
-		//GET DURATION
-		String input = JOptionPane.showInputDialog(null, "Give me a duration (min.): ");
-		int duration = Integer.parseInt(input);
-		minutes += duration;
-		if (minutes > 60 || minutes == 60) {
-			int addHour = minutes / 60;
-			hours += addHour;
-			minutes %= 60;
+			String input = JOptionPane.showInputDialog("How many nights are you staying?: ");
+			nights = Integer.parseInt(input);
+		} while (nights < 0 || nights == 0);
+		
+		//Note that hotel is in euros, but i am coverting equal because it is only .16 different
+			//math the cost in total
+			//Create a bar chart using '*' for every $50
+		//Auburn Lodge Hotel = 51 price
+		aurburnLodge = 51 * nights;
+		cost = aurburnLodge/50;
+		while (cost > 0) {
+			message1 += '*';
+			cost -= 1;
 		}
-		System.out.println("Hours: " + hours);
-		System.out.println("Minutes: " + minutes);		
 		
+		//Clayton Hotel Ballsbridge = 161 price
+		claytonHotel = 161 * nights;
+		cost = claytonHotel/50;
+		while (cost > 0) {
+			message2 += '*';
+			cost -= 1;
+		}
 		
+		//The K Club = 224 price
+		kClub = 224 * nights;
+		cost = kClub/50;
+		while (cost > 0) {
+			message3 += '*';
+			cost -= 1;
+		}
 		
-		
+		//print to so that everything is lined up
+		JOptionPane.showMessageDialog(null, "This is the results of your search: \n"
+				+ "Aurburn Lodge " + message1 + " - " + aurburnLodge + "\n"
+				+ "   Clayton Hotel " + message2 + " - " + claytonHotel + "\n"
+				+ "                 KClub " + message3 + " - " + kClub);
+	//Can't figure out why it is printing null??????
 	}
+
+	private static String string(String string) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+
 }
